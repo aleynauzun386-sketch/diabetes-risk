@@ -1,43 +1,23 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Sayfası</title>
+</head>
+<body>
+
+<h2>Test Sayfası</h2>
+
+<button onclick="calisiyorMu()">Test Et</button>
+
+<p id="sonuc"></p>
+
 <script>
-function hesapla() {
-    let yas = document.getElementById("age").value;
-
-    if (yas === "") {
-        document.getElementById("sonuc").innerText =
-            "Lütfen yaş bilgisini giriniz.";
-        return;
-    }
-
-    yas = Number(yas);
-
-    let sigara = Number(document.getElementById("smoking").value);
-    let kalp = Number(document.getElementById("heart").value);
-    let bmi = Number(document.getElementById("bmi").value);
-    let ht = Number(document.getElementById("ht").value);
-    let aile = Number(document.getElementById("family").value);
-    let aktivite = Number(document.getElementById("activity").value);
-
-    let risk = 0;
-
-    if (yas >= 45) risk += 2;
-
-    risk += sigara;
-    risk += kalp;
-    risk += bmi;
-    risk += ht;
-    risk += aile;
-    risk -= aktivite;
-
-    let mesaj = "";
-
-    if (risk <= 3) {
-        mesaj = "Düşük diyabet riski";
-    } else if (risk <= 6) {
-        mesaj = "Orta diyabet riski";
-    } else {
-        mesaj = "Yüksek diyabet riski – sağlık kuruluşuna başvurunuz";
-    }
-
-    document.getElementById("sonuc").innerText = mesaj;
+function calisiyorMu() {
+    document.getElementById("sonuc").innerText = "ÇALIŞIYOR ✅";
 }
 </script>
+
+</body>
+</html>
+
