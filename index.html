@@ -9,28 +9,26 @@
 <h2>Diyabet Risk Testi</h2>
 
 <label>Yaş:</label><br>
-<input type="number" id="age"><br><br> 
+<input type="number" id="age"><br><br>
+
 <label>Sigara kullanıyor musunuz?</label><br>
 <select id="smoking">
     <option value="no">Hayır</option>
     <option value="yes">Evet</option>
-</select>
-<br><br>
-    
+</select><br><br>
+
 <label>Cinsiyet:</label><br>
 <select id="gender">
     <option value="female">Kadın</option>
     <option value="male">Erkek</option>
-</select>
-<br><br>
-    
+</select><br><br>
+
 <label>Ailede diyabet öyküsü var mı?</label><br>
 <select id="family">
     <option value="no">Yok</option>
     <option value="yes">Var</option>
-</select>
-<br><br>
-    
+</select><br><br>
+
 <label>Boy (cm):</label><br>
 <input type="number" id="height"><br><br>
 
@@ -40,8 +38,6 @@
 <button onclick="hesapla()">Sonucu Göster</button>
 
 <p id="sonuc"></p>
-<p id="sonuc"></p>
-
 <div id="oneriler" style="margin-top:15px; font-weight:bold;"></div>
 
 <script>
@@ -51,6 +47,7 @@ function hesapla() {
     if (yas === "") {
         document.getElementById("sonuc").innerText =
             "Lütfen yaşınızı giriniz.";
+        document.getElementById("oneriler").innerText = "";
         return;
     }
 
@@ -59,20 +56,17 @@ function hesapla() {
     if (yas < 45) {
         document.getElementById("sonuc").innerText =
             "Düşük diyabet riski";
+        document.getElementById("oneriler").innerText = "";
     } else {
         document.getElementById("sonuc").innerText =
             "Artmış diyabet riski";
-    } else {
-    document.getElementById("sonuc").innerText =
-        "Artmış diyabet riski";
 
-    document.getElementById("oneriler").innerText =
-        "⚠️ Diyabet riski yüksek bulunmuştur.\n\n" +
-        "• Bir sağlık kuruluşuna başvurmanız önerilir\n" +
-        "• Kan şekeri ölçümlerinin düzenli yapılması önemlidir\n" +
-        "• Dengeli beslenme ve fiziksel aktivite alışkanlıkları kazanılmalıdır\n" +
-        "• Sigara kullanımı varsa bırakılması önerilir";
-}
+        document.getElementById("oneriler").innerText =
+            "⚠️ Diyabet riski yüksek bulunmuştur.\n\n" +
+            "• Bir sağlık kuruluşuna başvurmanız önerilir\n" +
+            "• Kan şekeri ölçümlerinin düzenli yapılması önemlidir\n" +
+            "• Dengeli beslenme ve fiziksel aktivite alışkanlıkları kazanılmalıdır\n" +
+            "• Sigara kullanımı varsa bırakılması önerilir";
     }
 }
 </script>
