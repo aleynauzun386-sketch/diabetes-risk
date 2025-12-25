@@ -40,6 +40,9 @@
 <button onclick="hesapla()">Sonucu Göster</button>
 
 <p id="sonuc"></p>
+<p id="sonuc"></p>
+
+<div id="oneriler" style="margin-top:15px; font-weight:bold;"></div>
 
 <script>
 function hesapla() {
@@ -59,6 +62,18 @@ function hesapla() {
     } else {
         document.getElementById("sonuc").innerText =
             "Artmış diyabet riski";
+    } else {
+    document.getElementById("sonuc").innerText =
+        "Artmış diyabet riski";
+
+    document.getElementById("oneriler").innerText =
+        "⚠️ Diyabet riski yüksek bulunmuştur.\n\n" +
+        "• Bir sağlık kuruluşuna başvurmanız önerilir\n" +
+        "• Kan şekeri ölçümlerinin düzenli yapılması önemlidir\n" +
+        "• Dengeli beslenme ve fiziksel aktivite alışkanlıkları kazanılmalıdır\n" +
+        "• Sigara kullanımı varsa bırakılması önerilir";
+}
+ 
     }
 }
 </script>
