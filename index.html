@@ -1,68 +1,15 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <title>Diyabet Risk Değerlendirme</title>
-</head>
-<body style="font-family: Arial; padding:20px;">
-
-<h2>Diyabet Risk Değerlendirme Formu</h2>
-
-<p><b>Uyarı:</b> Bu uygulama tanı koymaz, bilgilendirme amaçlıdır.</p>
-
-<label>Yaş:</label><br>
-<input type="number" id="age"><br><br>
-
-<label>Cinsiyet:</label><br>
-<select id="gender">
-    <option value="0">Kadın</option>
-    <option value="1">Erkek</option>
-</select><br><br>
-
-<label>Vücut Kitle İndeksi (VKİ):</label><br>
-<select id="bmi">
-    <option value="0">Normal</option>
-    <option value="1">Fazla kilolu</option>
-    <option value="2">Obez</option>
-</select><br><br>
-
-<label>Sigara Kullanımı:</label><br>
-<select id="smoking">
-    <option value="0">Hayır</option>
-    <option value="2">Evet</option>
-</select><br><br>
-
-<label>Hipertansiyon:</label><br>
-<select id="ht">
-    <option value="0">Yok</option>
-    <option value="2">Var</option>
-</select><br><br>
-
-<label>Kalp Hastalığı Öyküsü:</label><br>
-<select id="heart">
-    <option value="0">Yok</option>
-    <option value="3">Var</option>
-</select><br><br>
-
-<label>Ailede Diyabet Öyküsü:</label><br>
-<select id="family">
-    <option value="0">Yok</option>
-    <option value="3">Var</option>
-</select><br><br>
-
-<label>Fiziksel Aktivite:</label><br>
-<select id="activity">
-    <option value="2">Düzenli</option>
-    <option value="0">Düzensiz</option>
-</select><br><br>
-
-<button onclick="hesapla()">Sonucu Göster</button>
-
-<h3 id="sonuc"></h3>
-
 <script>
 function hesapla() {
-    let yas = Number(document.getElementById("age").value);
+    let yas = document.getElementById("age").value;
+
+    if (yas === "") {
+        document.getElementById("sonuc").innerText =
+            "Lütfen yaş bilgisini giriniz.";
+        return;
+    }
+
+    yas = Number(yas);
+
     let sigara = Number(document.getElementById("smoking").value);
     let kalp = Number(document.getElementById("heart").value);
     let bmi = Number(document.getElementById("bmi").value);
@@ -94,6 +41,3 @@ function hesapla() {
     document.getElementById("sonuc").innerText = mesaj;
 }
 </script>
-
-</body>
-</html>
