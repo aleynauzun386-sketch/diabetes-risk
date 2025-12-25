@@ -42,32 +42,61 @@
 
 <script>
 function hesapla() {
-    let yas = document.getElementById("age").value;
+    // Verileri al
+    let yas = Number(document.getElementById("age").value);
+    let sigara = document.getElementById("smoking").value; // yes / no
+    let aile = document.getElementById("family").value;     // yes / no
+    let boy = Number(document.getElementById("height").value);
+    let kilo = Number(document.getElementById("weight").value);
 
-    if (yas === "") {
+    // Kontrol: boş değer var mı?
+    if (!yas || !boy || !kilo) {
         document.getElementById("sonuc").innerText =
-            "Lütfen yaşınızı giriniz.";
+            "Lütfen yaş, boy ve kilo bilgilerini giriniz.";
         document.getElementById("oneriler").innerText = "";
         return;
     }
 
-    yas = Number(yas);
+    // BMI hesapla
+    let bmi = kilo / ((boy / 100) ** 2);
 
-    if (yas < 45) {
-        document.getElementById("sonuc").innerText =
-            "Düşük diyabet riski";
-        document.getElementById("oneriler").innerText = "";
-    } else {
-        document.getElementById("sonuc").innerText =
-            "Artmış diyabet riski";
+    // Risk puanı
+    let riskScore = 0;
+    if (yas >= 45) riskScore += 1;
+    if (bmi >= 30) riskScore += 1;
+    if (sigara === "yes") riskScore += 1;
+    if (aile === "yes") riskScore += 1;
 
-        document.getElementById("oneriler").innerText =
+    // Risk seviyesi
+    let riskLevel = "Düşük";
+    if (riskScore >= 3) riskLevel = "Yüksek";
+    else if (riskScore === 2) riskLevel = "Orta";
+
+    // Sonucu yazdır
+    document.getElementById("sonuc").innerText =
+        riskLevel + " diyabet riski";
+
+    // Öneriler
+    let onerilerMetni = "";
+    if (riskLevel === "Yüksek") {
+        onerilerMetni =
             "⚠️ Diyabet riski yüksek bulunmuştur.\n\n" +
             "• Bir sağlık kuruluşuna başvurmanız önerilir\n" +
             "• Kan şekeri ölçümlerinin düzenli yapılması önemlidir\n" +
             "• Dengeli beslenme ve fiziksel aktivite alışkanlıkları kazanılmalıdır\n" +
             "• Sigara kullanımı varsa bırakılması önerilir";
+    } else if (riskLevel === "Orta") {
+        onerilerMetni =
+            "⚠️ Diyabet riski orta seviyededir.\n\n" +
+            "• Düzenli egzersiz ve sağlıklı beslenme önerilir\n" +
+            "• Kan şekeri kontrolü için doktorunuza danışabilirsiniz";
+    } else {
+        onerilerMetni =
+            "✅ Diyabet riski düşük.\n\n" +
+            "• Sağlıklı yaşam alışkanlıklarını sürdürmeye devam edin";
     }
+
+    document.getElementById("oneriler").innerText = onerilerMetni;
 }
 </script>
 
