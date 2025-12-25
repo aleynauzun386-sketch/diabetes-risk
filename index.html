@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Diyabet Risk Testi</title>
+</head>
+<body>
+
+<h2>Diyabet Risk Değerlendirme</h2>
+
+<p>Bu test tanı koymaz, bilgilendirme amaçlıdır.</p>
+
+<label>Yaş:</label><br>
+<input type="number" id="age"><br><br>
+
+<label>Sigara Kullanıyor musunuz?</label><br>
+<select id="smoking">
+    <option value="0">Hayır</option>
+    <option value="2">Evet</option>
+</select><br><br>
+
+<label>Kalp Hastalığı Öyküsü:</label><br>
+<select id="heart">
+    <option value="0">Yok</option>
+    <option value="3">Var</option>
+</select><br><br>
+
+<button onclick="hesapla()">Sonucu Göster</button>
+
+<p id="sonuc"></p>
+
+<script>
+function hesapla() {
+    let yas = document.getElementById("age").value;
+    let sigara = document.getElementById("smoking").value;
+    let kalp = document.getElementById("heart").value;
+
+    let risk = 0;
+
+    if (yas >= 45) risk += 2;
+    risk += Number(sigara);
+    risk += Number(kalp);
+
+    let mesaj = "";
+
+    if (risk <= 2) {
+        mesaj = "Düşük diyabet riski";
+    } else if (risk <= 4) {
+        mesaj = "Orta diyabet riski";
+    } else {
+        mesaj = "Yüksek diyabet riski – doktora başvurunuz";
+    }
+
+    document.getElementById("sonuc").innerText = mesaj;
+}
+</script>
+
+</body>
+</html>
